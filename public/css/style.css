@@ -1,0 +1,33 @@
+:root {
+  --discord-dark-grey: #2f3136;
+  --discord-mid-grey: #36393f;
+  --discord-light-grey: #40444b;
+  --discord-blue: #7289da;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: var(--discord-dark-grey);
+  color: white;
+
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  width: 100vw;
+}
+
+.waves {
+  width: 100vw;
+  height: 100px;
+  
+}
+
+.button {
+  background-color: var(--discord-blue);
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
