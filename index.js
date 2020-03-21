@@ -19,6 +19,7 @@ Client.login(process.env.BOT_TOKEN);
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT = encodeURIComponent(process.env.REDIRECT);
+const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
@@ -64,4 +65,4 @@ app.get("/welcome", async (req, res) => {
   res.send(token);
 });
 
-app.listen("3000");
+app.listen(PORT);
