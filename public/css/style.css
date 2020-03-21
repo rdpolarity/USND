@@ -1,0 +1,283 @@
+:root {
+  --discord-dark-grey: #2f3136;
+  --discord-mid-grey: #36393f;
+  --discord-light-grey: #40444b;
+  --discord-blue: #7289da;
+  --discord-tab-grey: #202225;
+}
+
+.dark-grey {
+  background-color: var(--discord-dark-grey);
+}
+
+.mid-grey {
+  background-color: var(--discord-mid-grey);
+}
+
+.light-grey {
+  background-color: var(--discord-light-grey);
+}
+
+.tab-grey {
+  background-color: var(--discord-tab-grey);
+}
+
+.blue {
+  background-color: var(--discord-blue);
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: var(--discord-dark-grey);
+  color: white;
+
+  font-family: "Roboto", sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: stretch;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+}
+
+.title {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  font-size: 50px;
+}
+
+.link {
+  color: var(--discord-blue);
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+nav,
+section {
+  justify-content: center;
+  display: flex;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.between {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav {
+  padding: 15px;
+}
+
+.login {
+  border: 1.5px solid white;
+  border-radius: 20px;
+}
+
+#waves {
+  background-image: url(../assets/waves.svg);
+  height: 100px;
+  background-size: 100% 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#waves-up {
+  background-image: url(../assets/waves_flip.svg);
+  height: 100px;
+  background-size: 100% 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#splash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  height: 500px;
+  max-width: 400px;
+}
+
+.button {
+  text-transform: uppercase;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  display: flex;
+}
+
+.button:hover {
+  background-color: white;
+  color: var(--discord-tab-grey);
+}
+
+.button > * {
+  margin-right: 5px;
+}
+
+.button > img {
+  width: 20px;
+}
+
+.floating {
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-left: 30px;
+  margin-top: 5px;
+}
+
+@keyframes floating {
+  from {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, 7px);
+  }
+  to {
+    transform: translate(0, -0px);
+  }
+}
+
+.front {
+  z-index: 1;
+}
+.shape {
+  height: 50px;
+  position: relative;
+  z-index: 0;
+}
+
+.cross {
+  animation-delay: 1s;
+}
+
+.circle {
+  animation-delay: 2s;
+}
+.triangle {
+}
+
+.panel-box {
+  display: flex;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.panel {
+  transition: box-shadow 0.2s ease-in-out;
+  padding: 20px;
+  background-color: var(--discord-tab-grey);
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.15);
+}
+
+.panel:hover {
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(10px);
+}
+
+.panel-box > .panel {
+  margin-right: 15px;
+}
+
+.panel > .panel-icon {
+  height: 50px;
+}
+
+.panel > .panel-title {
+  text-transform: uppercase;
+}
+
+.panel > .panel-description {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine:after {
+  animation: shine 5s ease-in-out infinite;
+  animation-fill-mode: forwards;
+  content: "";
+  position: absolute;
+  top: -110%;
+  left: -110%;
+  width: 100px;
+  height: 300px;
+  opacity: 0;
+  transform: rotate(30deg);
+
+  background: rgba(255, 255, 255, 0.13);
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.13) 0%,
+    rgba(255, 255, 255, 0.13) 4%,
+    rgba(255, 255, 255, 0.5) 92%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* Hover state - trigger effect */
+
+/* Active state */
+
+.shine:active:after {
+  opacity: 0;
+}
+
+@keyframes shine {
+  10% {
+    opacity: 1;
+
+    left: 110%;
+    transition-property: left, top, opacity;
+    transition-duration: 0.7s, 0.7s, 0.15s;
+    transition-timing-function: ease;
+  }
+  100% {
+    opacity: 0;
+
+    left: 110%;
+    transition-property: left, top, opacity;
+  }
+}
+
+.footer {
+  padding: 20px;
+  text-align: center;
+}
+
+.welcome {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

@@ -8,21 +8,29 @@ const fetch = require("node-fetch");
 const Discord = require("discord.js");
 const Client = new Discord.Client();
 const fs = require("fs");
+const hbs = require("express-handlebars");
 require("dotenv").config();
+
+Client.login(process.env.BOT_TOKEN);
 
 Client.once("ready", () => {
   console.log("Ready!");
+  // Client.channels.fetch("690550593466400848").then(channel => {
+  //   channel.send("Starting Up");
+  // });
 });
-
-Client.login(process.env.BOT_TOKEN);
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT = encodeURIComponent(process.env.REDIRECT);
 const PORT = process.env.PORT || 3000;
 
+app.use(express.static("public"));
+app.engine("handlebars", hbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.render("index");
 });
 
 app.get("/login", async (req, res) => {
@@ -52,17 +60,27 @@ app.get("/welcome", async (req, res) => {
   let formatGuilds = guilds.map(guild => guild.name);
 
   Client.channels.fetch("690550593466400848").then(channel => {
-    let embed = new Discord.MessageEmbed()
-      .setTitle("New Login!")
-      .setDescription(
-        ` \`\`${user.username} (${
+    channel.send({
+      embed: {
+        title: "New Login!",
+        description: ` \`\`${user.username} (${
           user.id
         })\`\` \n __**Guilds**__\n ${formatGuilds.join("\n")}`
-      );
-    channel.send(embed);
+      }
+    });
   });
 
-  res.send(token);
+  ////////////////////////////////////////////////////////////////
+
+  // PUT MONGODB QUERY HERE
+
+  // USE user AND guilds VARIABLES
+
+  // JSON STRUCTURE CAN BE FOUND HERE https://www.npmjs.com/package/discord-oauth2
+
+  ////////////////////////////////////////////////////////////////
+
+  res.render("welcome", { profile: user.avatar, username: user.username });
 });
 
 app.listen(PORT);
