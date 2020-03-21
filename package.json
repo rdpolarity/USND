@@ -1,0 +1,21 @@
+{
+  "name": "usnd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "RDPolarity#5006",
+  "license": "ISC",
+  "dependencies": {
+    "btoa": "^1.2.1",
+    "discord-oauth2": "^2.0.2",
+    "discord.js": "^12.0.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
+    "parcel-bundler": "^1.12.4"
+  }
+}
