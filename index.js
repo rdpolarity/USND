@@ -11,18 +11,18 @@ const fs = require("fs");
 const hbs = require("express-handlebars");
 require("dotenv").config();
 
-Client.login(process.env.BOT_TOKEN);
+// Client.login(process.env.BOT_TOKEN);
 
-Client.once("ready", () => {
-  console.log("Ready!");
-  // Client.channels.fetch("690550593466400848").then(channel => {
-  //   channel.send("Starting Up");
-  // });
-});
+// Client.once("ready", () => {
+//   console.log("Ready!");
+//   // Client.channels.fetch("690550593466400848").then(channel => {
+//   //   channel.send("Starting Up");
+//   // });
+// });
 
-const CLIENT_ID = process.env.CLIENT_ID;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const REDIRECT = encodeURIComponent(process.env.REDIRECT);
+// const CLIENT_ID = process.env.CLIENT_ID;
+// const CLIENT_SECRET = process.env.CLIENT_SECRET;
+// const REDIRECT = encodeURIComponent(process.env.REDIRECT);
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static("public"));
@@ -40,35 +40,35 @@ app.get("/login", async (req, res) => {
 });
 
 app.get("/welcome", async (req, res) => {
-  if (!req.query.code) throw new Error("NoCodeProvided");
-  const CODE = req.query.code;
-  const creds = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
-  const response = await fetch(
-    `https://discordapp.com/api/oauth2/token?grant_type=authorization_code&code=${CODE}&redirect_uri=${REDIRECT}`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Basic ${creds}`
-      }
-    }
-  );
-  const json = await response.json();
-  const token = json.access_token;
-  const user = await oauth.getUser(token);
-  const guilds = await oauth.getUserGuilds(token);
+  // if (!req.query.code) throw new Error("NoCodeProvided");
+  // const CODE = req.query.code;
+  // const creds = btoa(`${CLIENT_ID}:${CLIENT_SECRET}`);
+  // const response = await fetch(
+  //   `https://discordapp.com/api/oauth2/token?grant_type=authorization_code&code=${CODE}&redirect_uri=${REDIRECT}`,
+  //   {
+  //     method: "POST",
+  //     headers: {
+  //       Authorization: `Basic ${creds}`
+  //     }
+  //   }
+  // );
+  // const json = await response.json();
+  // const token = json.access_token;
+  // const user = await oauth.getUser(token);
+  // const guilds = await oauth.getUserGuilds(token);
 
-  let formatGuilds = guilds.map(guild => guild.name);
+  // let formatGuilds = guilds.map(guild => guild.name);
 
-  Client.channels.fetch("690550593466400848").then(channel => {
-    channel.send({
-      embed: {
-        title: "New Login!",
-        description: ` \`\`${user.username} (${
-          user.id
-        })\`\` \n __**Guilds**__\n ${formatGuilds.join("\n")}`
-      }
-    });
-  });
+  // Client.channels.fetch("690550593466400848").then(channel => {
+  //   channel.send({
+  //     embed: {
+  //       title: "New Login!",
+  //       description: ` \`\`${user.username} (${
+  //         user.id
+  //       })\`\` \n __**Guilds**__\n ${formatGuilds.join("\n")}`
+  //     }
+  //   });
+  // });
 
   ////////////////////////////////////////////////////////////////
 
